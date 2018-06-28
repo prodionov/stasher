@@ -6,7 +6,15 @@ export const stashFilter = async params => {
   if (!params) {
     pathRequest = path;
   } else {
-    pathRequest = `${path}?city=${params.payload.search}`;
+    pathRequest = `${path}?`;
+    Object.keys(params.payload).forEach((key, index) => {
+      if (params.payload[key]) {
+        pathRequest += `${key}=${params.payload[key]}&`;
+      }
+    });
+    if (pathRequest[pathRequest.length - 1] == "&") {
+      pathRequest = pathRequest.slice(0, pathRequest.length - 1);
+    }
   }
 
   const res = await fetch(pathRequest);
