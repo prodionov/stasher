@@ -21,9 +21,11 @@ export default class Advanced extends Component {
     event.preventDefault();
     let params = {
       type: "advancedSearch",
-      payload: {
+      payloadFilter: {
         city: this.state.search,
-        featured: this.state.featured,
+        featured: this.state.featured
+      },
+      payloadOrder: {
         by_bags_last_30_days: this.state.by_bags_last_30_days
       }
     };
@@ -66,8 +68,8 @@ export default class Advanced extends Component {
               value={this.state.by_bags_last_30_days}
               onChange={this.handleChange}
             >
-              <option value="true">Yes</option>
-              <option value="false" selected>
+              <option value={true}>Yes</option>
+              <option value={false} selected>
                 No
               </option>
             </select>
