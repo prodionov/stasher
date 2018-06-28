@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MultipleStash from "./MultipleStash";
 import AdvancedSearchBar from "./AdvancedSearchBar";
-import { stashFilter } from "../utils/stashFilter";
+import { dataRequest } from "../utils/dataRequest";
 
 export default class MainDisplay extends Component {
   state = {
@@ -10,12 +10,12 @@ export default class MainDisplay extends Component {
   };
 
   componentWillMount() {
-    stashFilter().then(data => this.setState({ stashMultiple: data }));
+    dataRequest().then(data => this.setState({ stashMultiple: data }));
     this.setState({ isFirstDisplay: false });
   }
 
   submitRequest = params => {
-    stashFilter(params)
+    dataRequest(params)
       .then(data => this.setState({ stashMultiple: data }))
       .then(() => {
         this.setState({ isFirstDisplay: false });
