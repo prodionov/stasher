@@ -12,22 +12,22 @@ export default class Advanced extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    console.log(name);
     target.type === "select-one"
       ? this.setState({ [name]: value })
       : this.setState({ search: event.target.value });
   };
 
-  searchRequest = event => {
+  submitRequest = event => {
     event.preventDefault();
-    stashFilter({
+    let params = {
       type: "advancedSearch",
       payload: {
         city: this.state.search,
         featured: this.state.featured,
         by_bags_last_30_days: this.state.by_bags_last_30_days
       }
-    });
+    };
+    this.props.submitRequest(params);
   };
 
   render() {
@@ -66,7 +66,7 @@ export default class Advanced extends Component {
               <option value="false">No</option>
             </select>
           </label>
-          <button onClick={this.searchRequest}>search</button>
+          <button onClick={this.submitRequest}>search</button>
         </form>
       </div>
     );

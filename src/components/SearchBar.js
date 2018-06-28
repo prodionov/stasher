@@ -11,7 +11,6 @@ export default class SearchBar extends Component {
 
   searchRequest = event => {
     event.preventDefault();
-    console.log(this.state.search);
   };
 
   render() {
