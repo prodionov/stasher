@@ -6,11 +6,13 @@ export default class MultipleStash extends Component {
     return (
       <div className="stashList">
         {this.props.stashPoints.map((stash, i) => {
-          return (
-            <div key={i} className="stashItem">
-              <SingleStash stash={stash} />
-            </div>
-          );
+          if (i < 15) {
+            return (
+              <div key={i} className="stashItem">
+                <SingleStash stash={stash} />
+              </div>
+            );
+          }
         })}
       </div>
     );
