@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { stashFilter } from "../utils/stashFilter";
+import { SingleStash } from "./SingleStash";
 
 export default class MultipleStash extends Component {
   state = {
@@ -16,7 +17,7 @@ export default class MultipleStash extends Component {
         {this.state.stashMultiple.map((stash, i) => {
           return (
             <div key={i} className="stash">
-              <p>{stash.name}</p>
+              <SingleStash stash={stash} />
             </div>
           );
         })}
