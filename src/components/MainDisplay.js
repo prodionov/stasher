@@ -34,7 +34,7 @@ export default class MainDisplay extends Component {
           <AdvancedSearchBar submitRequest={this.submitRequest} />
         </div>
         {!isFirstDisplay & (length === 0) ? (
-          <h2>nothing found</h2>
+          <h2>Loading...</h2>
         ) : (
           <MultipleStash stashPoints={this.state.stashMultiple} />
         )}

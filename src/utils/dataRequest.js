@@ -1,4 +1,5 @@
 const path = "https://api-staging.stasher.com/v1/stashpoints";
+const orderType = "by_bags_last_30_days";
 
 export const dataRequest = async params => {
   let pathRequest = "";
@@ -8,14 +9,22 @@ export const dataRequest = async params => {
     pathRequest = path;
   } else {
     pathRequest = `${path}?`;
-    Object.keys(params.payload).forEach((key, index) => {
-      if (params.payload[key]) {
-        pathRequest += `${key}=${params.payload[key]}&`;
+
+    Object.keys(params.payloadFilter).forEach((key, index) => {
+      if (params.payloadFilter[key]) {
+        pathRequest += `${key}=${params.payloadFilter[key]}&`;
       }
     });
     if (pathRequest[pathRequest.length - 1] == "&") {
       pathRequest = pathRequest.slice(0, pathRequest.length - 1);
     }
+
+    if (params.payloadOrder[orderType]) {
+      pathRequest[pathRequest.length - 1] === "?"
+        ? (pathRequest += `${orderType}=desc`)
+        : (pathRequest += `&${orderType}=desc`);
+    }
+    console.log("pathRequest", pathRequest);
   }
 
   const checkResponse = response => {
