@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { stashFilter } from "../utils/stashFilter";
+//import { stashFilter } from "../utils/stashFilter";
 
 export default class Advanced extends Component {
   state = {
