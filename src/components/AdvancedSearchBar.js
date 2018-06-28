@@ -4,8 +4,8 @@ import { stashFilter } from "../utils/stashFilter";
 export default class Advanced extends Component {
   state = {
     search: "",
-    twentyfour_seven: "yes",
-    featured: "yes"
+    twentyfour_seven: true,
+    featured: true
   };
 
   handleChange = event => {
@@ -23,7 +23,7 @@ export default class Advanced extends Component {
     stashFilter({
       type: "advancedSearch",
       payload: {
-        search: this.state.search,
+        city: this.state.search,
         twentyfour_seven: this.state.twentyfour_seven,
         featured: this.state.featured
       }
@@ -46,8 +46,8 @@ export default class Advanced extends Component {
           <label>
             Fetured Stash Points
             <select value={this.state.featured} onChange={this.handleChange}>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </select>
           </label>
           <button onClick={this.searchRequest}>search</button>
