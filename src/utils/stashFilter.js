@@ -18,9 +18,19 @@ export const stashFilter = async params => {
     }
   }
 
-  console.log("pathRequest", pathRequest);
-  const res = await fetch(pathRequest);
-  const json = await res.json();
-  console.log("json", json);
-  return json;
+  const checkResponse = response => {
+    if (response.status !== 200) {
+      console.log(`Error with the request! ${response.status}`);
+      return;
+    }
+    return response.json();
+  };
+
+  const res = await fetch(pathRequest)
+    .then(checkResponse)
+    .catch(err => {
+      throw new Error(`fetch stashAPI failed ${err}`);
+    });
+  // const json = await res.json();
+  return res;
 };
