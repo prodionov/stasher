@@ -54,10 +54,10 @@ img {
   width: 10vw;
   height: 10vw;
   padding-top: 2vh;
-  padding-left: 1vw;
 }
 
 .itemCard {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
