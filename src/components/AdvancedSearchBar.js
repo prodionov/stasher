@@ -16,12 +16,10 @@ export default class Advanced extends Component {
     target.type === "select-one"
       ? this.setState({ [name]: value })
       : this.setState({ search: event.target.value });
-    console.log("state", this.state);
   };
 
   searchRequest = event => {
     event.preventDefault();
-    console.log(event.target.value);
     stashFilter({
       type: "advancedSearch",
       payload: {

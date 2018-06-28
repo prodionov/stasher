@@ -2,6 +2,7 @@ const path = "https://api-staging.stasher.com/v1/stashpoints";
 
 export const stashFilter = async params => {
   let pathRequest = "";
+  console.log("params", params);
 
   if (!params) {
     pathRequest = path;
@@ -17,7 +18,9 @@ export const stashFilter = async params => {
     }
   }
 
+  console.log("pathRequest", pathRequest);
   const res = await fetch(pathRequest);
   const json = await res.json();
+  console.log("json", json);
   return json;
 };

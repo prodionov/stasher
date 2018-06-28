@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import MultipleStash from "./components/MultipleStash";
-import AdvancedSearchBar from "./components/AdvancedSearchBar";
+import MainDisplay from "./components/MainDisplay";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>hello world</h1>
-        <AdvancedSearchBar />
-        <MultipleStash />
+        <h1>City Stasher</h1>
+        <MainDisplay />
       </div>
     );
   }
